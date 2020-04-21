@@ -22,7 +22,7 @@ RUN chmod -R a+r /usr/local/bundle
 FROM ruby:2.6.3-alpine
 LABEL maintainer="WPScan Team <team@wpscan.org>"
 
-RUN adduser -h /wpscan -g WPScan -D wpscan
+RUN adduser -h /wpscan -g WPScan -D wpscan -s /bin/sh
 
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
@@ -37,4 +37,6 @@ USER wpscan
 
 RUN /usr/local/bundle/bin/wpscan --update --verbose
 
-ENTRYPOINT ["/usr/local/bundle/bin/wpscan"]
+ENV PATH="/usr/local/bundle/bin:${PATH}"
+
+CMD ["/bin/sh"]
