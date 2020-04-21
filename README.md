@@ -1,3 +1,16 @@
+# Modifications within this Fork
+
+Forked from the official repository of wpscan - https://github.com/wpscanteam/wpscan/.
+
+Added modifications to the Dockerfile so that it can be used directly with Jenkins pipeline without issues caused by:
+
+Entrypoint cannot be over written with --entrypoint argument in jenkinfile - https://issues.jenkins-ci.org/browse/JENKINS-51307 and https://issues.jenkins-ci.org/browse/JENKINS-51307.
+cat command is always run during the docker run which leads to "/bin/sh: can't open 'cat': No such file or directory" in the original docker image by wpscanteam - https://github.com/jenkinsci/docker-workflow-plugin/pull/116.
+These are Jenkins specific issue with docker pipelines and would not be something wpscanteam would specifically address. Hence, I created the above solution.
+
+
+
+
 <p align="center">
   <a href="https://wpscan.org/">
     <img src="https://raw.githubusercontent.com/wpscanteam/wpscan/gh-pages/images/wpscan_logo.png" alt="WPScan logo">
