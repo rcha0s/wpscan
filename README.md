@@ -45,25 +45,17 @@ These are Jenkins specific issue with docker pipelines and would not be somethin
 - RubyGems      - Recommended: latest
 - Nokogiri might require packages to be installed via your package manager depending on your OS, see https://nokogiri.org/tutorials/installing_nokogiri.html
 
-### From RubyGems (Recommended)
+### In a Pentesting distribution
+
+When using a pentesting distubution (such as Kali Linux), it is recommended to install/update wpscan via the package manager if available.
+
+### From RubyGems
 
 ```shell
 gem install wpscan
 ```
 
 On MacOSX, if a ```Gem::FilePermissionError``` is raised due to the Apple's System Integrity Protection (SIP), either install RVM and install wpscan again, or run ```sudo gem install -n /usr/local/bin wpscan``` (see [#1286](https://github.com/wpscanteam/wpscan/issues/1286))
-
-### From sources (NOT Recommended)
-
-Prerequisites: Git
-
-```shell
-git clone https://github.com/wpscanteam/wpscan
-
-cd wpscan/
-
-bundle install && rake install
-```
 
 # Updating
 
@@ -90,6 +82,8 @@ docker run -it --rm wpscanteam/wpscan --url https://target.tld/ --enumerate u1-1
 ** replace u1-100 with a range of your choice.
 
 # Usage
+
+Full user documentation can be found here; https://github.com/wpscanteam/wpscan/wiki/WPScan-User-Documentation
 
 ```wpscan --url blog.tld``` This will scan the blog using default options with a good compromise between speed and accuracy. For example, the plugins will be checked passively but their version with a mixed detection mode (passively + aggressively). Potential config backup files will also be checked, along with other interesting findings.
 
